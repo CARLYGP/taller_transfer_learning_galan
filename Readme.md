@@ -42,6 +42,7 @@ modelos/resnet50_cifar100.pth
 **Descargar pesos:**  
 [VGG16 y ResNet50 – Transfer Learning](https://drive.google.com/drive/folders/1GVKpuzWxfS2GLQF9hEEoRIH-8N4ByZMt)
 
+Una vez instalados los pesos deberán guardarse en la carpeta ./modelos
 
 
 
