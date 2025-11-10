@@ -57,12 +57,17 @@ A continuación se presentan las métricas de entrenamiento y validación de los
 ### Modelo 2 
 ![Métricas ResNet50](modelos/metricas2.png)
 
-### Análisis comparativo
-- Ambos modelos muestran una disminución clara del loss y una mejora constante del accuracy, lo que indica aprendizaje progresivo.  
-- Las curvas de entrenamiento y validación se mantienen relativamente cercanas, sin brechas pronunciadas, por lo que *no hay evidencia fuerte de overfitting.  
-- El F1-score en validación crece y se estabiliza, lo que sugiere buen equilibrio entre precisión y recall.  
-- VGG16 alcanza mayor precisión general, mientras que ResNet50, pese a su menor desempeño inicial, muestra una mejora sostenida y estabilidad en validación.  
-- En conjunto, ambos modelos convergen correctamente y presentan buena capacidad de generalización, incluso con pocas épocas de entrenamiento.
+
+### Análisis
+ - VGG16 (CIFAR-10) muestra una disminución rápida y estable del loss, acompañada de un aumento constante en la precisión de validación (~88 %).  
+  Las curvas de entrenamiento y validación se mantienen muy cercanas, lo que indica ausencia de sobreajuste.  
+  En su F1-score se observa un pico pronunciado alrededor de las épocas 4–5, seguido por una ligera caída y posterior recuperación, lo que refleja una pequeña oscilación natural del modelo al ajustar sus pesos.
+
+  Esta variación es normal y no representa pérdida de generalización, ya que el F1 termina estabilizándose en valores altos.  
+- ResNet50 (CIFAR-100) presenta una baja progresiva del loss y una mejora más gradual en el accuracy, esperable por la mayor complejidad del dataset.  
+  Su F1-score de validación aumenta de forma suave y estable, sin cambios abruptas, lo que refleja un aprendizaje controlado y sin sobreajuste.  
+- En conjunto, ambos modelos mantienen comportamientos consistentes entre entrenamiento y validación.  
+  VGG16 logra mayor rendimiento absoluto (por la menor complejidad del CIFAR-10), mientras que ResNet50 demuestra mayor estabilidad y robustez ante un conjunto más exigente.
 
 ## Ejemplos de inferencia
 
