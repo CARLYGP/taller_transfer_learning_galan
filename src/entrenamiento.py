@@ -129,7 +129,7 @@ print("Guardado: modelos/vgg16_cifar10.pth")
 
 # ENTRENAMIENTO RESNET50 (CIFAR-100)
 
-print("\n🚀 Entrenando ResNet50 en CIFAR-100")
+print("\n Entrenando ResNet50 en CIFAR-100")
 resnet50 = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
 for p in resnet50.parameters():
     p.requires_grad = False
