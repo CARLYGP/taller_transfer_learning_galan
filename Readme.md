@@ -51,7 +51,7 @@ Una vez instalados los pesos deberán guardarse en la carpeta ./modelos
 
 El siguiente gráfico resume el comportamiento del loss, accuracy y F1-score durante el entrenamiento y validación de ambos modelos.
 
-![Métricas de Entrenamiento y Validación](modelos/metricas_completas.png)
+![Métricas de Entrenamiento y Validación](modelos/metricas.png)
 
 ### Análisis
 - Ambos modelos muestran una disminución progresiva del loss y una mejora sostenida del accuracy, evidenciando aprendizaje estable.  
