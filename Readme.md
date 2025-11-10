@@ -61,9 +61,7 @@ A continuación se presentan las métricas de entrenamiento y validación de los
 ### Análisis
  - VGG16 (CIFAR-10) muestra una disminución rápida y estable del loss, acompañada de un aumento constante en la precisión de validación (~88 %).  
   Las curvas de entrenamiento y validación se mantienen muy cercanas, lo que indica ausencia de sobreajuste.  
-  En su F1-score se observa un pico pronunciado alrededor de las épocas 4–5, seguido por una ligera caída y posterior recuperación, lo que refleja una pequeña oscilación natural del modelo al ajustar sus pesos.
-
-  Esta variación es normal y no representa pérdida de generalización, ya que el F1 termina estabilizándose en valores altos.  
+  En su F1-score se observa un pico pronunciado alrededor de las épocas 4–5, seguido por una ligera caída y posterior recuperación, lo que refleja una pequeña oscilación natural del modelo al ajustar sus pesos. Esta variación es normal y no representa pérdida de generalización, ya que el F1 termina estabilizándose en valores altos.  
 - ResNet50 (CIFAR-100) presenta una baja progresiva del loss y una mejora más gradual en el accuracy, esperable por la mayor complejidad del dataset.  
   Su F1-score de validación aumenta de forma suave y estable, sin cambios abruptas, lo que refleja un aprendizaje controlado y sin sobreajuste.  
 - En conjunto, ambos modelos mantienen comportamientos consistentes entre entrenamiento y validación.  
