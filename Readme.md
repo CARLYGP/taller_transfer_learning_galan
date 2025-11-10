@@ -31,7 +31,7 @@ Durante el entrenamiento:
 - Se reemplazó la última capa (`classifier` o `fc`) para adaptarse al número de clases del dataset.
 - Se congelaron las capas convolucionales del backbone (transfer learning parcial).
 - Se usó una tasa de aprendizaje inicial de 1e-3 y optimizador Adam.
-- Épocas: 10
+- Épocas: 7
 - Tamaño de lote (batch): 64
 - Transformaciones: Resize, Normalización y RandomHorizontalFlip para entrenamiento.
 
@@ -46,47 +46,18 @@ Una vez instalados los pesos deberán guardarse en la carpeta ./modelos
 
 
 
-## Resultados de entrenamiento
 
-### Desempeño de VGG16 – CIFAR-10
-| Época | Loss | Accuracy (%) | F1-score |
-|--------|------|---------------|-----------|
-| 1 | 0.71 | 83.9 | 0.83 |
-| 5 | 0.46 | 87.8 | 0.87 |
-| 10 | 0.33 | 88.3 | 0.885 |
+## Evaluación y comparación de métricas (Entrenamiento y Validación)
 
-**Análisis:**
-- La pérdida disminuye consistentemente a medida que avanza el entrenamiento.
-- El modelo converge rápido gracias al transfer learning desde ImageNet.
-- El rendimiento se estabiliza cerca de 88 % de precisión y F1 = 0.88.
+El siguiente gráfico resume el comportamiento del loss, accuracy y F1-score durante el entrenamiento y validación de ambos modelos.
 
-![Curvas VGG16](modelos/VGG.png)
+![Métricas de Entrenamiento y Validación](modelos/metricas_completas.png)
 
----
-
-### Desempeño de ResNet50 – CIFAR-100
-| Época | Loss | Accuracy (%) | F1-score |
-|--------|------|---------------|-----------|
-| 1 | 2.12 | 55.6 | 0.55 |
-| 5 | 1.36 | 59.1 | 0.59 |
-| 10 | 1.24 | 60.5 | 0.60 |
-
-**Análisis:**
-- La pérdida baja de 2.1 a 1.2, indicando aprendizaje estable.
-- La precisión mejora de 55 % a 60 %, esperable para un dataset más complejo.
-- El F1-score se mantiene en torno a 0.6, con buena estabilidad.
-
-![Curvas ResNet50](modelos/Resnet.png)
-
----
-
-## Evaluación y comparación
-
-| Modelo | Dataset | Accuracy | F1-score | Nº Clases | Observaciones |
-|---------|----------|-----------|-----------|-------------|---------------|
-| **VGG16** | CIFAR-10 | 88.3 % | 0.885 | 10 | Converge rápido, predicciones muy seguras |
-| **ResNet50** | CIFAR-100 | 60.5 % | 0.60 | 100 | Más robusto, pero con mayor variabilidad de confianza |
-
+### Análisis
+- Ambos modelos muestran una disminución progresiva del loss y una mejora sostenida del accuracy, evidenciando aprendizaje estable.  
+- Las curvas de entrenamiento y validación se mantienen cercanas, lo que indica ausencia de sobreajuste notable (overfitting).  
+- El F1-score aumenta de forma consistente en validación, reflejando un equilibrio entre precisión y recall.  
+- En general, los modelos convergen correctamente y presentan buena capacidad de generalización hacia los datos no vistos con tan pocas épocas de entrenamiento.
 
 ---
 
@@ -104,9 +75,9 @@ El modelo **VGG16 (10 clases – CIFAR-10)** muestra una consistencia sobresalie
 En cambio, el modelo **ResNet50 (100 clases – CIFAR-100)** evidencia un mayor desafío de generalización, propio de su conjunto de datos más complejo y diverso. Si bien logra identificar con precisión *rose* y *worm* (ambas con confianza 1.00), presenta confusiones visuales en objetos con texturas o patrones similares:  
 
 - La imagen del reloj fue clasificada erróneamente con(0.76), lo que sugiere que el modelo asocia los tonos y gradientes del fondo con características del mar en CIFAR-100.  
-- El caracol y el tanque fueron clasificados como *unknown* (0.33 y 0.47 respectivamente), gracias a la implementación de una función de umbral de confianza (threshold) que marca como desconocido todo objeto cuya predicción no supera un nivel mínimo de certeza. Esta estrategia permite reducir falsos positivos y detectar imágenes fuera de distribución *out-of-distribution*, mejorando la confiabilidad del sistema durante la inferencia.
+- El caracol y el tanque fueron clasificados como *unknown* (0.33 y 0.47 respectivamente), gracias a la implementación de una función de umbral de confianza (threshold) que marca como desconocido todo objeto cuya predicción no supera un nivel mínimo de certeza. Esta estrategia permite reducir falsos positivos y detectar imágenes fuera de distribución "out-of-distribution", mejorando la confiabilidad del sistema durante la inferencia.
 
-Aun así, considerando que CIFAR-100 es un dataset diez veces más complejo que CIFAR-10, el modelo ResNet50 muestra un buen aprovechamiento del Transfer Learning, logrando resultados estables en apenas 10 épocas.  
+Aun así, considerando que CIFAR-100 es un dataset diez veces más complejo que CIFAR-10, el modelo ResNet50 muestra un buen aprovechamiento del Transfer Learning, logrando resultados estables en apenas 7 épocas.  
 Esto evidencia que la red logró transferir correctamente parte del conocimiento previo de ImageNet, adaptándose de forma efectiva a un nuevo dominio con muchas más categorías y variaciones visuales.
 
 
