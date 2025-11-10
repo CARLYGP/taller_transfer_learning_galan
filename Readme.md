@@ -49,17 +49,20 @@ Una vez instalados los pesos deberán guardarse en la carpeta ./modelos
 
 ## Evaluación y comparación de métricas (Entrenamiento y Validación)
 
-El siguiente gráfico resume el comportamiento del loss, accuracy y F1-score durante el entrenamiento y validación de ambos modelos.
+A continuación se presentan las métricas de entrenamiento y validación de los dos modelos evaluados.
 
-![Métricas de Entrenamiento y Validación](modelos/metricas.png)
+### Modelo 1
+![Métricas VGG16](modelos/metricas.png)
 
-### Análisis
-- Ambos modelos muestran una disminución progresiva del loss y una mejora sostenida del accuracy, evidenciando aprendizaje estable.  
-- Las curvas de entrenamiento y validación se mantienen cercanas, lo que indica ausencia de sobreajuste notable (overfitting).  
-- El F1-score aumenta de forma consistente en validación, reflejando un equilibrio entre precisión y recall.  
-- En general, los modelos convergen correctamente y presentan buena capacidad de generalización hacia los datos no vistos con tan pocas épocas de entrenamiento.
+### Modelo 2 
+![Métricas ResNet50](modelos/metricas_resnet50.png)
 
----
+### Análisis comparativo
+- Ambos modelos muestran una disminución clara del loss y una mejora constante del accuracy, lo que indica aprendizaje progresivo.  
+- Las curvas de entrenamiento y validación se mantienen relativamente cercanas, sin brechas pronunciadas, por lo que *no hay evidencia fuerte de overfitting.  
+- El F1-score en validación crece y se estabiliza, lo que sugiere buen equilibrio entre precisión y recall.  
+- VGG16 alcanza mayor precisión general, mientras que ResNet50, pese a su menor desempeño inicial, muestra una mejora sostenida y estabilidad en validación.  
+- En conjunto, ambos modelos convergen correctamente y presentan buena capacidad de generalización, incluso con pocas épocas de entrenamiento.
 
 ## Ejemplos de inferencia
 
