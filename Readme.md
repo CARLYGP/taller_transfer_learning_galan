@@ -70,8 +70,6 @@ Para cerrar el servidor, vuelve a la terminal y presiona:
 
 ---
 
-## 💡 Recomendación final
-Si las imágenes de prueba provienen de Internet y obtienes confianza = 1.00 en todos los casos, prueba con **imágenes más complejas o fuera del dominio** (por ejemplo, fotografías reales con fondo variado) para evaluar mejor la **capacidad de generalización** de los modelos.
 
 ## Dataset y explicación
 Se emplearon dos datasets clásicos de clasificación de imágenes:
