@@ -55,7 +55,7 @@ A continuación se presentan las métricas de entrenamiento y validación de los
 ![Métricas VGG16](modelos/metricas.png)
 
 ### Modelo 2 
-![Métricas ResNet50](modelos/metricas_resnet50.png)
+![Métricas ResNet50](modelos/metricas2.png)
 
 ### Análisis comparativo
 - Ambos modelos muestran una disminución clara del loss y una mejora constante del accuracy, lo que indica aprendizaje progresivo.  
