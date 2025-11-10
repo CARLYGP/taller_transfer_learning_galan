@@ -6,6 +6,73 @@ El taller aplica Transfer Learning utilizando los modelos **VGG16** y **ResNet50
 
 ---
 
+# Instrucciones para ejecutar el proyecto en local
+
+A continuación se detallan los pasos necesarios para clonar, instalar y ejecutar el taller completo de Transfer Learning – VGG16 y ResNet50 con su API de inferencia en FastAPI.
+
+---
+
+## 1. Clonar el repositorio
+Abre una terminal (PowerShell, CMD o Git Bash) y ejecuta:
+
+    git clone https://github.com/CARLYGP/taller_transfer_learning_galan.git
+    cd taller_transfer_learning_galan
+
+---
+
+##  2. Crear entorno virtual (opcional pero recomendado)
+En Windows (PowerShell):
+
+    python -m venv venv
+    venv\Scripts\activate
+
+En macOS / Linux:
+
+    python3 -m venv venv
+    source venv/bin/activate
+
+---
+
+## 3. Instalar dependencias
+Instala todos los paquetes requeridos para ejecutar los modelos y la API:
+
+    pip install -r requirements.txt
+---
+
+##  4. Descargar los pesos entrenados
+Descarga los modelos preentrenados desde el siguiente enlace y guárdalos en la carpeta `modelos/` dentro del proyecto:
+
+🔗 [VGG16 y ResNet50 – Transfer Learning](https://drive.google.com/drive/folders/1GVKpuzWxfS2GLQF9hEEoRIH-8N4ByZMt)
+
+Se Debe tener estos dos archivos:
+
+    modelos/vgg16_cifar10.pth
+    modelos/resnet50_cifar100.pth
+
+---
+
+##  5. Ejecutar la API de inferencia
+
+### 1. Iniciar el servidor
+python -m uvicorn src.api_inferencia:app
+
+### 2. Acceder desde el navegador
+http://127.0.0.1:8000/docs
+
+### 3. Probar el endpoint `/predict/`
+Subir una imagen `.jpg` o `.png` y recibir una predicción en formato JSON:
+
+
+##  7. Detener el servidor
+Para cerrar el servidor, vuelve a la terminal y presiona:
+
+    CTRL + C
+
+---
+
+## 💡 Recomendación final
+Si las imágenes de prueba provienen de Internet y obtienes confianza = 1.00 en todos los casos, prueba con **imágenes más complejas o fuera del dominio** (por ejemplo, fotografías reales con fondo variado) para evaluar mejor la **capacidad de generalización** de los modelos.
+
 ## Dataset y explicación
 Se emplearon dos datasets clásicos de clasificación de imágenes:
 
@@ -94,15 +161,5 @@ Resultado de ejecución para una imagen de testeo:
 
 ![test](modelos/API.png)
 
-### 1. Iniciar el servidor
-python -m uvicorn src.api_inferencia:app
-
-### 2. Acceder desde el navegador
-http://127.0.0.1:8000/docs
-
-### 3. Probar el endpoint `/predict/`
-Subir una imagen `.jpg` o `.png` y recibir una predicción JSON:
-```json
-{
   "prediction": "airplane"
 }
