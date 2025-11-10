@@ -102,7 +102,7 @@ El modelo **VGG16 (10 clases – CIFAR-10)** muestra una consistencia sobresalie
 
 En cambio, el modelo **ResNet50 (100 clases – CIFAR-100)** evidencia un mayor desafío de generalización, propio de su conjunto de datos más complejo y diverso. Si bien logra identificar con precisión *rose* y *worm* (ambas con confianza 1.00), presenta confusiones visuales en objetos con texturas o patrones similares:  
 
-- La imagen del reloj fue clasificada erróneamente como *sea* (0.76), lo que sugiere que el modelo asocia los tonos y gradientes del fondo con características del mar en CIFAR-100.  
+- La imagen del reloj fue clasificada erróneamente con(0.76), lo que sugiere que el modelo asocia los tonos y gradientes del fondo con características del mar en CIFAR-100.  
 - El caracol y el tanque fueron clasificados como *unknown* (0.33 y 0.47 respectivamente), gracias a la implementación de una función de umbral de confianza (threshold) que marca como desconocido todo objeto cuya predicción no supera un nivel mínimo de certeza. Esta estrategia permite reducir falsos positivos y detectar imágenes fuera de distribución *out-of-distribution*, mejorando la confiabilidad del sistema durante la inferencia.
 
 Aun así, considerando que CIFAR-100 es un dataset diez veces más complejo que CIFAR-10, el modelo ResNet50 muestra un buen aprovechamiento del Transfer Learning, logrando resultados estables en apenas 10 épocas.  
@@ -119,7 +119,7 @@ Resultado de ejecución para una imagen de testeo:
 ![test](modelos/API.png)
 
 ### 1. Iniciar el servidor
-uvicorn api_inferencia:app --reload
+python -m uvicorn src.api_inferencia:app
 
 ### 2. Acceder desde el navegador
 http://127.0.0.1:8000/docs
